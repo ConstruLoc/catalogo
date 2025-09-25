@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import ProductCard from "./ProductCard";
+import ProductDetails from "./ProductDetails";
 import { Search, Filter, Grid, List } from "lucide-react";
 
 // Import equipment images
@@ -110,6 +111,8 @@ const ProductCatalog = () => {
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [searchTerm, setSearchTerm] = useState("");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [selectedProduct, setSelectedProduct] = useState<typeof products[0] | null>(null);
+  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
 
   const filteredProducts = products.filter(product => {
     const matchesCategory = selectedCategory === "Todos" || product.category === selectedCategory;
@@ -117,6 +120,11 @@ const ProductCatalog = () => {
                          product.description.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesCategory && matchesSearch;
   });
+
+  const handleViewDetails = (product: typeof products[0]) => {
+    setSelectedProduct(product);
+    setIsDetailsOpen(true);
+  };
 
   return (
     <section id="catalogo" className="py-20 bg-background">
@@ -205,9 +213,20 @@ const ProductCatalog = () => {
             : "grid-cols-1"
         }`}>
           {filteredProducts.map((product) => (
-            <ProductCard key={product.id} {...product} />
+            <ProductCard 
+              key={product.id} 
+              {...product} 
+              onViewDetails={() => handleViewDetails(product)}
+            />
           ))}
         </div>
+
+        {/* Product Details Modal */}
+        <ProductDetails
+          product={selectedProduct}
+          isOpen={isDetailsOpen}
+          onClose={() => setIsDetailsOpen(false)}
+        />
 
         {/* Load More */}
         {filteredProducts.length > 0 && (

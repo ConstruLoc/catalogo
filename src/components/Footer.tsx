@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import { Link } from "react-router-dom";
 import { 
   Phone, 
   Mail, 
@@ -29,7 +30,7 @@ const Footer = () => {
               className="h-12 w-auto"
             />
             <p className="text-muted-foreground text-sm leading-relaxed">
-              A ConstruLogic é especialista em locação de equipamentos para construção, 
+              A ConstruLoc é especialista em locação de equipamentos para construção, 
               oferecendo soluções completas para sua obra com qualidade e segurança garantidas.
             </p>
             <div className="flex space-x-3">
@@ -50,29 +51,24 @@ const Footer = () => {
             <h3 className="font-semibold text-lg">Links Rápidos</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#inicio" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                <Link to="/" className="text-muted-foreground hover:text-primary transition-colors text-sm">
                   Início
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#catalogo" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  Catálogo
-                </a>
+                <Link to="/equipamentos" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  Equipamentos
+                </Link>
               </li>
               <li>
-                <a href="#sobre" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                <Link to="/sobre" className="text-muted-foreground hover:text-primary transition-colors text-sm">
                   Sobre Nós
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#contato" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                <Link to="/contato" className="text-muted-foreground hover:text-primary transition-colors text-sm">
                   Contato
-                </a>
-              </li>
-              <li>
-                <a href="#orcamento" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  Solicitar Orçamento
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -82,29 +78,29 @@ const Footer = () => {
             <h3 className="font-semibold text-lg">Equipamentos</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#escavadeiras" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                <Link to="/equipamentos#escavadeiras" className="text-muted-foreground hover:text-primary transition-colors text-sm">
                   Escavadeiras
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#betoneiras" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                <Link to="/equipamentos#betoneiras" className="text-muted-foreground hover:text-primary transition-colors text-sm">
                   Betoneiras
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#andaimes" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                <Link to="/equipamentos#andaimes" className="text-muted-foreground hover:text-primary transition-colors text-sm">
                   Andaimes
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#compactadores" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                <Link to="/equipamentos#compactadores" className="text-muted-foreground hover:text-primary transition-colors text-sm">
                   Compactadores
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#geradores" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                <Link to="/equipamentos#geradores" className="text-muted-foreground hover:text-primary transition-colors text-sm">
                   Geradores
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -119,7 +115,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <Mail className="h-4 w-4 text-primary" />
-                <span className="text-muted-foreground">contato@construlogic.com.br</span>
+                <span className="text-muted-foreground">contato@construloc.com.br</span>
               </div>
               <div className="flex items-start gap-2 text-sm">
                 <MapPin className="h-4 w-4 text-primary mt-0.5" />
@@ -158,7 +154,7 @@ const Footer = () => {
         {/* Bottom Footer */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <div className="flex flex-col md:flex-row items-center gap-4">
-            <p>© {currentYear} ConstruLogic. Todos os direitos reservados.</p>
+            <p>© {currentYear} ConstruLoc. Todos os direitos reservados.</p>
             <div className="flex gap-4">
               <a href="#privacidade" className="hover:text-primary transition-colors">
                 Política de Privacidade

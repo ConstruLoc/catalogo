@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Heart, Star, Eye } from "lucide-react";
+import { Heart, Star, Eye, MessageCircle } from "lucide-react";
 import { useState } from "react";
 
 interface ProductCardProps {
@@ -15,6 +15,7 @@ interface ProductCardProps {
   rating: number;
   isPopular?: boolean;
   specifications: string[];
+  onViewDetails?: () => void;
 }
 
 const ProductCard = ({ 
@@ -26,10 +27,17 @@ const ProductCard = ({
   description, 
   rating,
   isPopular = false,
-  specifications 
+  specifications,
+  onViewDetails 
 }: ProductCardProps) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+
+  const handleWhatsAppRent = () => {
+    const message = `Olá! Gostaria de alugar o equipamento: ${name} - ${price}/dia. Podem me enviar mais informações?`;
+    const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
 
   return (
     <Card className="group overflow-hidden border-0 shadow-card hover:shadow-primary transition-all duration-300 hover:-translate-y-2 bg-gradient-card">
@@ -72,6 +80,7 @@ const ProductCard = ({
             <Button 
               size="sm" 
               className="w-full bg-background/90 text-foreground hover:bg-primary hover:text-primary-foreground backdrop-blur-sm"
+              onClick={onViewDetails}
             >
               <Eye className="w-4 h-4 mr-2" />
               Ver Detalhes
@@ -123,11 +132,20 @@ const ProductCard = ({
           </div>
 
           <div className="flex gap-2 pt-2">
-            <Button className="flex-1 bg-gradient-primary hover:bg-gradient-hero text-primary-foreground shadow-primary">
+            <Button 
+              className="flex-1 bg-gradient-primary hover:bg-gradient-hero text-primary-foreground shadow-primary"
+              onClick={handleWhatsAppRent}
+            >
+              <MessageCircle className="h-4 w-4 mr-2" />
               Alugar Agora
             </Button>
-            <Button variant="outline" size="icon" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-              <Heart className="h-4 w-4" />
+            <Button 
+              variant="outline" 
+              size="icon" 
+              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+              onClick={() => setIsFavorite(!isFavorite)}
+            >
+              <Heart className={`h-4 w-4 ${isFavorite ? 'fill-current' : ''}`} />
             </Button>
           </div>
         </div>

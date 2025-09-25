@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Menu, X, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link, useLocation } from "react-router-dom";
 import construlogicLogo from "@/assets/construlogic-logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   const categories = [
     "Escavadeiras",
@@ -42,48 +44,75 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center">
+          <Link to="/" className="flex items-center">
             <img 
               src={construlogicLogo} 
-              alt="ConstruLogic - Locações de Equipamentos" 
+              alt="ConstruLoc - Locações de Equipamentos" 
               className="h-12 w-auto"
             />
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            <a href="#inicio" className="text-foreground hover:text-primary transition-colors font-medium">
+            <Link 
+              to="/" 
+              className={`text-foreground hover:text-primary transition-colors font-medium ${
+                location.pathname === '/' ? 'text-primary' : ''
+              }`}
+            >
               Início
-            </a>
+            </Link>
             <div className="relative group">
-              <button className="text-foreground hover:text-primary transition-colors font-medium">
+              <Link 
+                to="/equipamentos"
+                className={`text-foreground hover:text-primary transition-colors font-medium ${
+                  location.pathname === '/equipamentos' ? 'text-primary' : ''
+                }`}
+              >
                 Equipamentos
-              </button>
+              </Link>
               <div className="absolute top-full left-0 mt-2 w-48 bg-card rounded-lg shadow-card border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 <div className="p-2">
                   {categories.map((category) => (
-                    <a
+                    <Link
                       key={category}
-                      href={`#${category.toLowerCase()}`}
+                      to={`/equipamentos#${category.toLowerCase()}`}
                       className="block px-3 py-2 text-sm text-foreground hover:text-primary hover:bg-accent rounded-md transition-colors"
                     >
                       {category}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
             </div>
-            <a href="#sobre" className="text-foreground hover:text-primary transition-colors font-medium">
+            <Link 
+              to="/sobre" 
+              className={`text-foreground hover:text-primary transition-colors font-medium ${
+                location.pathname === '/sobre' ? 'text-primary' : ''
+              }`}
+            >
               Sobre Nós
-            </a>
-            <a href="#contato" className="text-foreground hover:text-primary transition-colors font-medium">
+            </Link>
+            <Link 
+              to="/contato" 
+              className={`text-foreground hover:text-primary transition-colors font-medium ${
+                location.pathname === '/contato' ? 'text-primary' : ''
+              }`}
+            >
               Contato
-            </a>
+            </Link>
           </nav>
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <Button className="bg-gradient-primary hover:bg-gradient-hero text-primary-foreground shadow-primary">
+            <Button 
+              className="bg-gradient-primary hover:bg-gradient-hero text-primary-foreground shadow-primary"
+              onClick={() => {
+                const message = "Olá! Gostaria de solicitar um orçamento para locação de equipamentos. Podem me ajudar?";
+                const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+              }}
+            >
               Solicitar Orçamento
             </Button>
           </div>
@@ -103,31 +132,66 @@ const Header = () => {
         {isMenuOpen && (
           <div className="lg:hidden border-t bg-card">
             <nav className="py-4 space-y-2">
-              <a href="#inicio" className="block px-4 py-2 text-foreground hover:text-primary hover:bg-accent rounded-md transition-colors">
+              <Link 
+                to="/" 
+                className={`block px-4 py-2 text-foreground hover:text-primary hover:bg-accent rounded-md transition-colors ${
+                  location.pathname === '/' ? 'text-primary bg-accent' : ''
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Início
-              </a>
+              </Link>
               <div className="px-4 py-2">
-                <div className="font-medium text-foreground mb-2">Equipamentos</div>
-                <div className="pl-4 space-y-1">
+                <Link 
+                  to="/equipamentos"
+                  className={`font-medium text-foreground hover:text-primary transition-colors ${
+                    location.pathname === '/equipamentos' ? 'text-primary' : ''
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Equipamentos
+                </Link>
+                <div className="pl-4 space-y-1 mt-2">
                   {categories.map((category) => (
-                    <a
+                    <Link
                       key={category}
-                      href={`#${category.toLowerCase()}`}
+                      to={`/equipamentos#${category.toLowerCase()}`}
                       className="block py-1 text-sm text-muted-foreground hover:text-primary transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
                     >
                       {category}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
-              <a href="#sobre" className="block px-4 py-2 text-foreground hover:text-primary hover:bg-accent rounded-md transition-colors">
+              <Link 
+                to="/sobre" 
+                className={`block px-4 py-2 text-foreground hover:text-primary hover:bg-accent rounded-md transition-colors ${
+                  location.pathname === '/sobre' ? 'text-primary bg-accent' : ''
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Sobre Nós
-              </a>
-              <a href="#contato" className="block px-4 py-2 text-foreground hover:text-primary hover:bg-accent rounded-md transition-colors">
+              </Link>
+              <Link 
+                to="/contato" 
+                className={`block px-4 py-2 text-foreground hover:text-primary hover:bg-accent rounded-md transition-colors ${
+                  location.pathname === '/contato' ? 'text-primary bg-accent' : ''
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Contato
-              </a>
+              </Link>
               <div className="px-4 pt-2">
-                <Button className="w-full bg-gradient-primary hover:bg-gradient-hero text-primary-foreground">
+                <Button 
+                  className="w-full bg-gradient-primary hover:bg-gradient-hero text-primary-foreground"
+                  onClick={() => {
+                    const message = "Olá! Gostaria de solicitar um orçamento para locação de equipamentos. Podem me ajudar?";
+                    const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`;
+                    window.open(whatsappUrl, '_blank');
+                    setIsMenuOpen(false);
+                  }}
+                >
                   Solicitar Orçamento
                 </Button>
               </div>

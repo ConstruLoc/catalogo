@@ -1,0 +1,317 @@
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { 
+  Phone, 
+  Mail, 
+  MapPin, 
+  Clock, 
+  MessageCircle,
+  Send,
+  Instagram,
+  Facebook,
+  Linkedin
+} from "lucide-react";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+
+const Contato = () => {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: ""
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // WhatsApp message with form data
+    const whatsappMessage = `
+Olá! Recebi um contato através do site:
+
+*Nome:* ${formData.name}
+*Email:* ${formData.email}
+*Telefone:* ${formData.phone}
+*Assunto:* ${formData.subject}
+*Mensagem:* ${formData.message}
+    `.trim();
+    
+    const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(whatsappUrl, '_blank');
+    
+    toast({
+      title: "Mensagem enviada!",
+      description: "Você será redirecionado para o WhatsApp para finalizar o contato.",
+    });
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleWhatsAppDirect = () => {
+    const message = "Olá! Gostaria de falar com vocês sobre locação de equipamentos.";
+    const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
+  const contactInfo = [
+    {
+      icon: Phone,
+      title: "Telefone",
+      details: "(11) 99999-9999",
+      action: () => window.open('tel:+5511999999999')
+    },
+    {
+      icon: Mail,
+      title: "Email",
+      details: "contato@construloc.com.br",
+      action: () => window.open('mailto:contato@construloc.com.br')
+    },
+    {
+      icon: MapPin,
+      title: "Endereço",
+      details: "Rua dos Equipamentos, 123\nSão Paulo, SP - 01234-567",
+      action: () => window.open('https://maps.google.com/?q=Rua+dos+Equipamentos+123+São+Paulo')
+    },
+    {
+      icon: Clock,
+      title: "Horário",
+      details: "Seg-Sex: 7h às 18h\nSáb: 7h às 12h",
+      action: null
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Header />
+      
+      {/* Hero Section */}
+      <section className="py-20 bg-gradient-card border-b">
+        <div className="container mx-auto px-4 text-center">
+          <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
+            Contato
+          </Badge>
+          <h1 className="text-4xl lg:text-5xl font-bold mb-6">
+            Fale <span className="text-primary">Conosco</span>
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Estamos prontos para atender você! Entre em contato e descubra como 
+            podemos ajudar no seu projeto de construção.
+          </p>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Contact Form */}
+            <div>
+              <h2 className="text-3xl font-bold mb-6">Envie sua Mensagem</h2>
+              <Card className="shadow-card">
+                <CardHeader>
+                  <CardTitle>Formulário de Contato</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="name">Nome Completo *</Label>
+                        <Input
+                          id="name"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          required
+                          placeholder="Seu nome completo"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="phone">Telefone *</Label>
+                        <Input
+                          id="phone"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          required
+                          placeholder="(11) 99999-9999"
+                        />
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <Label htmlFor="email">Email *</Label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        placeholder="seu@email.com"
+                      />
+                    </div>
+                    
+                    <div>
+                      <Label htmlFor="subject">Assunto *</Label>
+                      <Input
+                        id="subject"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleInputChange}
+                        required
+                        placeholder="Ex: Orçamento para locação de escavadeira"
+                      />
+                    </div>
+                    
+                    <div>
+                      <Label htmlFor="message">Mensagem *</Label>
+                      <Textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        required
+                        placeholder="Descreva sua necessidade..."
+                        rows={5}
+                      />
+                    </div>
+                    
+                    <div className="flex gap-4">
+                      <Button 
+                        type="submit" 
+                        className="flex-1 bg-gradient-primary hover:bg-gradient-hero text-primary-foreground shadow-primary"
+                      >
+                        <Send className="w-4 h-4 mr-2" />
+                        Enviar Mensagem
+                      </Button>
+                      <Button 
+                        type="button"
+                        variant="outline"
+                        onClick={handleWhatsAppDirect}
+                        className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                      >
+                        <MessageCircle className="w-4 h-4 mr-2" />
+                        WhatsApp
+                      </Button>
+                    </div>
+                  </form>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Contact Info */}
+            <div>
+              <h2 className="text-3xl font-bold mb-6">Informações de Contato</h2>
+              <div className="space-y-6">
+                {contactInfo.map((info, index) => (
+                  <Card 
+                    key={index} 
+                    className={`shadow-card transition-all duration-300 ${
+                      info.action ? 'cursor-pointer hover:shadow-primary' : ''
+                    }`}
+                    onClick={info.action || undefined}
+                  >
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                          <info.icon className="h-6 w-6 text-primary" />
+                        </div>
+                        <div>
+                          <h3 className="font-semibold mb-1">{info.title}</h3>
+                          <p className="text-muted-foreground whitespace-pre-line">
+                            {info.details}
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+
+              {/* Quick Contact */}
+              <Card className="mt-8 shadow-card bg-gradient-card">
+                <CardContent className="p-6">
+                  <h3 className="font-semibold mb-4">Atendimento Rápido</h3>
+                  <div className="space-y-3">
+                    <Button 
+                      className="w-full bg-green-600 hover:bg-green-700 text-white"
+                      onClick={handleWhatsAppDirect}
+                    >
+                      <MessageCircle className="w-4 h-4 mr-2" />
+                      WhatsApp - Resposta Imediata
+                    </Button>
+                    <Button 
+                      variant="outline" 
+                      className="w-full"
+                      onClick={() => window.open('tel:+5511999999999')}
+                    >
+                      <Phone className="w-4 h-4 mr-2" />
+                      Ligar Agora
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Social Media */}
+              <Card className="mt-6 shadow-card">
+                <CardContent className="p-6">
+                  <h3 className="font-semibold mb-4">Redes Sociais</h3>
+                  <div className="flex gap-3">
+                    <Button size="icon" variant="outline" className="hover:bg-blue-600 hover:text-white">
+                      <Facebook className="h-4 w-4" />
+                    </Button>
+                    <Button size="icon" variant="outline" className="hover:bg-pink-600 hover:text-white">
+                      <Instagram className="h-4 w-4" />
+                    </Button>
+                    <Button size="icon" variant="outline" className="hover:bg-blue-700 hover:text-white">
+                      <Linkedin className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Map Section */}
+      <section className="py-20 bg-gradient-card">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold mb-4">Nossa Localização</h2>
+            <p className="text-muted-foreground">Venha nos visitar ou agende uma visita técnica</p>
+          </div>
+          <div className="bg-muted rounded-lg aspect-video flex items-center justify-center">
+            <div className="text-center">
+              <MapPin className="h-20 w-20 text-primary mx-auto mb-4" />
+              <p className="text-muted-foreground mb-4">Mapa interativo</p>
+              <Button 
+                variant="outline"
+                onClick={() => window.open('https://maps.google.com/?q=Rua+dos+Equipamentos+123+São+Paulo')}
+              >
+                Ver no Google Maps
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default Contato;

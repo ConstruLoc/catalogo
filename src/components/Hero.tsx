@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Shield, Clock, Award } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBg from "@/assets/construloc-hero-bg.png";
 
 const Hero = () => {
   return (
@@ -31,7 +31,7 @@ const Hero = () => {
           </h1>
           
           <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-            A ConstruLogic oferece o melhor em equipamentos para sua obra. 
+            A ConstruLoc oferece o melhor em equipamentos para sua obra. 
             Qualidade garantida, preços competitivos e atendimento especializado.
           </p>
 
