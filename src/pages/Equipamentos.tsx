@@ -12,10 +12,10 @@ const Equipamentos = () => {
       <section className="py-20 bg-gradient-card border-b">
         <div className="container mx-auto px-4 text-center">
           <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
-            Equipamentos
+            Produtos
           </Badge>
           <h1 className="text-4xl lg:text-5xl font-bold mb-6">
-            Nosso <span className="text-primary">Catálogo Completo</span>
+            Nossos <span className="text-primary">Produtos</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Descubra nossa ampla gama de equipamentos de construção para locação. 

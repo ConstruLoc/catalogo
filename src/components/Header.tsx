@@ -63,14 +63,14 @@ const Header = () => {
               Início
             </Link>
             <div className="relative group">
-              <Link 
-                to="/equipamentos"
-                className={`text-foreground hover:text-primary transition-colors font-medium ${
-                  location.pathname === '/equipamentos' ? 'text-primary' : ''
-                }`}
-              >
-                Equipamentos
-              </Link>
+            <Link 
+              to="/equipamentos"
+              className={`text-foreground hover:text-primary transition-colors font-medium ${
+                location.pathname === '/equipamentos' ? 'text-primary' : ''
+              }`}
+            >
+              Produtos
+            </Link>
               <div className="absolute top-full left-0 mt-2 w-48 bg-card rounded-lg shadow-card border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 <div className="p-2">
                   {categories.map((category) => (
@@ -149,7 +149,7 @@ const Header = () => {
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Equipamentos
+                  Produtos
                 </Link>
                 <div className="pl-4 space-y-1 mt-2">
                   {categories.map((category) => (

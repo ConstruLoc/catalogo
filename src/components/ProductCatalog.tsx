@@ -132,14 +132,13 @@ const ProductCatalog = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
-            Catálogo Completo
+            Nossos Produtos
           </Badge>
           <h2 className="text-4xl font-bold mb-6">
-            Nossos <span className="text-primary">Equipamentos</span>
+            Equipamentos em <span className="text-primary">Destaque</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Encontre o equipamento perfeito para sua obra. Todos os equipamentos 
-            passam por rigorosa manutenção e inspeção de segurança.
+            Confira alguns dos nossos equipamentos mais procurados para locação.
           </p>
         </div>
 
@@ -235,8 +234,9 @@ const ProductCatalog = () => {
               variant="outline" 
               size="lg"
               className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+              onClick={() => window.location.href = '/equipamentos'}
             >
-              Carregar Mais Equipamentos
+              Ver Todos os Produtos
             </Button>
           </div>
         )}

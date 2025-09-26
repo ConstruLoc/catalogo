@@ -57,7 +57,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/equipamentos" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  Equipamentos
+                  Produtos
                 </Link>
               </li>
               <li>
@@ -75,7 +75,7 @@ const Footer = () => {
 
           {/* Equipment Categories */}
           <div className="space-y-4">
-            <h3 className="font-semibold text-lg">Equipamentos</h3>
+            <h3 className="font-semibold text-lg">Produtos</h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/equipamentos#escavadeiras" className="text-muted-foreground hover:text-primary transition-colors text-sm">
