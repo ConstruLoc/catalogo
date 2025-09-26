@@ -129,18 +129,6 @@ const ProductCatalog = () => {
   return (
     <section id="catalogo" className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
-            Nossos Produtos
-          </Badge>
-          <h2 className="text-4xl font-bold mb-6">
-            Equipamentos em <span className="text-primary">Destaque</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Confira alguns dos nossos equipamentos mais procurados para locação.
-          </p>
-        </div>
 
         {/* Search and Filters */}
         <div className="mb-8 space-y-4">
