@@ -24,7 +24,7 @@ const Equipamentos = () => {
         </div>
       </section>
 
-      <ProductCatalog />
+      <ProductCatalog showViewAllButton={false} />
       <Footer />
     </div>
   );
