@@ -8,7 +8,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <Hero />
-      <ProductCatalog />
+      <ProductCatalog showViewAllButton={true} />
       <Footer />
     </div>
   );

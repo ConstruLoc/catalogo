@@ -164,9 +164,28 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          <p className="text-xs">
-            Desenvolvido com ❤️ para impulsionar sua obra
-          </p>
+          <div className="flex flex-col items-center md:items-end gap-1">
+            <p className="text-xs font-medium">
+              Desenvolvido por{" "}
+              <a 
+                href="https://gvsoftware.tech" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:underline font-semibold"
+              >
+                GV Software
+              </a>
+            </p>
+            <a 
+              href="https://instagram.com/gv_software" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-xs hover:text-primary transition-colors flex items-center gap-1"
+            >
+              <Instagram className="h-3 w-3" />
+              @gv_software
+            </a>
+          </div>
         </div>
       </div>
     </footer>

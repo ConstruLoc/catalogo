@@ -107,7 +107,7 @@ const products = [
 
 const categories = ["Todos", "Escavadeiras", "Betoneiras", "Andaimes", "Compactadores", "Geradores", "Ferramentas Elétricas"];
 
-const ProductCatalog = () => {
+const ProductCatalog = ({ showViewAllButton = false }: { showViewAllButton?: boolean }) => {
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [searchTerm, setSearchTerm] = useState("");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
@@ -215,22 +215,21 @@ const ProductCatalog = () => {
           onClose={() => setIsDetailsOpen(false)}
         />
 
-        {/* Load More */}
-        {filteredProducts.length > 0 && (
-          <div className="text-center mt-12">
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-              onClick={() => window.location.href = '/equipamentos'}
-            >
-              Ver Todos os Produtos
-            </Button>
-          </div>
-        )}
-
-        {/* No Results */}
-        {filteredProducts.length === 0 && (
+        {/* Load More or No Results */}
+        {filteredProducts.length > 0 ? (
+          showViewAllButton && (
+            <div className="text-center mt-12">
+              <Button 
+                variant="outline" 
+                size="lg"
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                onClick={() => window.location.href = '/equipamentos'}
+              >
+                Ver Todos os Produtos
+              </Button>
+            </div>
+          )
+        ) : (
           <div className="text-center py-12">
             <div className="w-24 h-24 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
               <Search className="h-12 w-12 text-muted-foreground" />
