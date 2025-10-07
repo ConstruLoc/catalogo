@@ -44,7 +44,7 @@ Olá! Recebi um contato através do site:
 *Mensagem:* ${formData.message}
     `.trim();
     
-    const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(whatsappMessage)}`;
+    const whatsappUrl = `https://wa.me/5517997310747?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(whatsappUrl, '_blank');
     
     toast({
@@ -62,7 +62,7 @@ Olá! Recebi um contato através do site:
 
   const handleWhatsAppDirect = () => {
     const message = "Olá! Gostaria de falar com vocês sobre locação de equipamentos.";
-    const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/5517997310747?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -70,20 +70,20 @@ Olá! Recebi um contato através do site:
     {
       icon: Phone,
       title: "Telefone",
-      details: "(11) 99999-9999",
-      action: () => window.open('tel:+5511999999999')
+      details: "(17) 99731-0747",
+      action: () => window.open('tel:+5517997310747')
     },
     {
       icon: Mail,
       title: "Email",
-      details: "contato@construloc.com.br",
-      action: () => window.open('mailto:contato@construloc.com.br')
+      details: "construloc.contato@gmail.com",
+      action: () => window.open('mailto:construloc.contato@gmail.com')
     },
     {
       icon: MapPin,
       title: "Endereço",
-      details: "Rua dos Equipamentos, 123\nSão Paulo, SP - 01234-567",
-      action: () => window.open('https://maps.google.com/?q=Rua+dos+Equipamentos+123+São+Paulo')
+      details: "R. Manoel de Lima 233\nCentro",
+      action: () => window.open('https://maps.google.com/?q=R.+Manoel+de+Lima+233+centro')
     },
     {
       icon: Clock,
@@ -256,7 +256,7 @@ Olá! Recebi um contato através do site:
                     <Button 
                       variant="outline" 
                       className="w-full"
-                      onClick={() => window.open('tel:+5511999999999')}
+                      onClick={() => window.open('tel:+5517997310747')}
                     >
                       <Phone className="w-4 h-4 mr-2" />
                       Ligar Agora
@@ -294,17 +294,17 @@ Olá! Recebi um contato através do site:
             <h2 className="text-3xl font-bold mb-4">Nossa Localização</h2>
             <p className="text-muted-foreground">Venha nos visitar ou agende uma visita técnica</p>
           </div>
-          <div className="bg-muted rounded-lg aspect-video flex items-center justify-center">
-            <div className="text-center">
-              <MapPin className="h-20 w-20 text-primary mx-auto mb-4" />
-              <p className="text-muted-foreground mb-4">Mapa interativo</p>
-              <Button 
-                variant="outline"
-                onClick={() => window.open('https://maps.google.com/?q=Rua+dos+Equipamentos+123+São+Paulo')}
-              >
-                Ver no Google Maps
-              </Button>
-            </div>
+          <div className="rounded-lg overflow-hidden shadow-card">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.5!2d-49.3777!3d-20.8194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94bdada5c0f0c5c5%3A0x1!2sR.%20Manoel%20de%20Lima%2C%20233%20-%20Centro!5e1!3m2!1spt-BR!2sbr!4v1234567890!5m2!1spt-BR!2sbr"
+              width="100%"
+              height="450"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Localização Construloc"
+            />
           </div>
         </div>
       </section>
