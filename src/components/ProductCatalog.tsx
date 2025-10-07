@@ -58,7 +58,9 @@ const ProductCatalog = ({ showViewAllButton = false }: { showViewAllButton?: boo
             description: item.descricao || '',
             rating: 4.5, // Default rating
             isPopular: item.destaque,
-            specifications: item.especificacoes ? item.especificacoes.split('\n').filter(s => s.trim()) : []
+            specifications: item.especificacoes && typeof item.especificacoes === 'string'
+              ? item.especificacoes.split('\n').filter(s => s.trim()) 
+              : []
           }));
 
           setProducts(transformedProducts);
