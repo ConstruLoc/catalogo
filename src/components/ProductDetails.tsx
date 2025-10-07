@@ -27,8 +27,8 @@ const ProductDetails = ({ product, isOpen, onClose }: ProductDetailsProps) => {
   if (!product) return null;
 
   const handleWhatsAppRent = () => {
-    const message = `Olá! Gostaria de alugar o equipamento: ${product.name} - ${product.price}/dia. Podem me enviar mais informações?`;
-    const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`;
+    const message = `Olá! Gostaria de alugar o equipamento: ${product.name} - ${product.price}. Podem me enviar mais informações?`;
+    const whatsappUrl = `https://wa.me/5517997310741?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -93,7 +93,6 @@ const ProductDetails = ({ product, isOpen, onClose }: ProductDetailsProps) => {
                 {product.originalPrice && (
                   <span className="text-lg text-muted-foreground line-through">{product.originalPrice}</span>
                 )}
-                <span className="text-muted-foreground">/dia</span>
               </div>
 
               <p className="text-muted-foreground leading-relaxed">
@@ -150,26 +149,15 @@ const ProductDetails = ({ product, isOpen, onClose }: ProductDetailsProps) => {
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Alugar via WhatsApp
               </Button>
-              
-              <div className="grid grid-cols-2 gap-3">
-                <Button variant="outline" size="lg">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  Agendar Visita
-                </Button>
-                <Button variant="outline" size="lg">
-                  <MessageCircle className="w-4 h-4 mr-2" />
-                  Dúvidas
-                </Button>
-              </div>
             </div>
 
             {/* Contact Info */}
             <div className="bg-accent/50 rounded-lg p-4">
               <h4 className="font-medium mb-2">Fale Conosco</h4>
               <div className="space-y-1 text-sm text-muted-foreground">
-                <p>📞 (11) 99999-9999</p>
-                <p>📧 contato@construloc.com.br</p>
-                <p>⏰ Seg-Sex: 7h-18h | Sáb: 7h-12h</p>
+                <p>📞 (17) 99731-0747</p>
+                <p>📧 construloc.contato@gmail.com</p>
+                <p>⏰ Segunda-Sexta: 07H-18H | Sábado: 07H-11H</p>
               </div>
             </div>
           </div>
