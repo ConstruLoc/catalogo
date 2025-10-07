@@ -102,22 +102,14 @@ const ProductCatalog = ({ showViewAllButton = false }: { showViewAllButton?: boo
           table: 'produtos_catalogo'
         },
         () => {
+          console.log('Mudança detectada nos produtos');
           fetchProducts();
         }
       )
       .subscribe();
 
-    // Polling fallback (in case realtime isn't enabled on the DB)
-    const visibilityHandler = () => {
-      if (document.visibilityState === 'visible') fetchProducts();
-    };
-    document.addEventListener('visibilitychange', visibilityHandler);
-    const intervalId = window.setInterval(fetchProducts, 5000);
-
     return () => {
       supabase.removeChannel(channel);
-      document.removeEventListener('visibilitychange', visibilityHandler);
-      window.clearInterval(intervalId);
     };
   }, [toast]);
 
