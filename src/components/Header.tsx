@@ -3,6 +3,7 @@ import { Menu, X, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 import construlogicLogo from "@/assets/construlogic-logo.png";
+import { openWhatsApp } from "@/lib/whatsapp";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -109,8 +110,7 @@ const Header = () => {
               className="bg-gradient-primary hover:bg-gradient-hero text-primary-foreground shadow-primary"
               onClick={() => {
                 const message = "Olá! Gostaria de solicitar um orçamento para locação de equipamentos. Podem me ajudar?";
-                const whatsappUrl = `https://wa.me/5517997310747?text=${encodeURIComponent(message)}`;
-                window.open(whatsappUrl, '_blank');
+                openWhatsApp('5517997310747', message);
               }}
             >
               Solicitar Orçamento
@@ -187,8 +187,7 @@ const Header = () => {
                   className="w-full bg-gradient-primary hover:bg-gradient-hero text-primary-foreground"
                   onClick={() => {
                     const message = "Olá! Gostaria de solicitar um orçamento para locação de equipamentos. Podem me ajudar?";
-                    const whatsappUrl = `https://wa.me/5517997310747?text=${encodeURIComponent(message)}`;
-                    window.open(whatsappUrl, '_blank');
+                    openWhatsApp('5517997310747', message);
                     setIsMenuOpen(false);
                   }}
                 >

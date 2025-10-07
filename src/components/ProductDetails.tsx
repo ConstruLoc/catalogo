@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Star, Heart, Share2, MessageCircle, Calendar, Shield, Truck, Clock } from "lucide-react";
 import { useState } from "react";
+import { openWhatsApp } from "@/lib/whatsapp";
 
 interface ProductDetailsProps {
   product: {
@@ -28,8 +29,7 @@ const ProductDetails = ({ product, isOpen, onClose }: ProductDetailsProps) => {
 
   const handleWhatsAppRent = () => {
     const message = `Olá! Gostaria de alugar o equipamento: ${product.name} - ${product.price}. Podem me enviar mais informações?`;
-    const whatsappUrl = `https://wa.me/5517997310741?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    openWhatsApp('5517997310747', message);
   };
 
   const handleShare = () => {

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Heart, Star, Eye, MessageCircle } from "lucide-react";
 import { useState } from "react";
+import { openWhatsApp } from "@/lib/whatsapp";
 
 interface ProductCardProps {
   id: string;
@@ -35,8 +36,7 @@ const ProductCard = ({
 
   const handleWhatsAppRent = () => {
     const message = `Olá! Gostaria de alugar o equipamento: ${name} - ${price}. Podem me enviar mais informações?`;
-    const whatsappUrl = `https://wa.me/5517997310741?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    openWhatsApp('5517997310747', message);
   };
 
   return (

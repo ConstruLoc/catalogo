@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Shield, Clock, Award } from "lucide-react";
 import heroBg from "@/assets/construloc-hero-bg.png";
+import { openWhatsApp } from "@/lib/whatsapp";
 
 const Hero = () => {
   return (
@@ -39,6 +40,7 @@ const Hero = () => {
             <Button 
               size="lg" 
               className="bg-gradient-primary hover:bg-gradient-hero text-primary-foreground shadow-primary group"
+              onClick={() => (window.location.href = '/equipamentos')}
             >
               Ver Catálogo Completo
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -47,6 +49,7 @@ const Hero = () => {
               size="lg" 
               variant="outline" 
               className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+              onClick={() => openWhatsApp('5517997310747', 'Olá! Gostaria de falar com um especialista sobre locação de equipamentos.')}
             >
               Falar com Especialista
             </Button>
