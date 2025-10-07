@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Menu, X, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
-import construlogicLogo from "@/assets/construloc-logo-new.png";
+import construlogicLogo from "@/assets/construlogic-logo.png";
 import { openWhatsApp } from "@/lib/whatsapp";
 
 const Header = () => {
