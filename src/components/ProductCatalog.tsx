@@ -53,8 +53,14 @@ const ProductCatalog = ({ showViewAllButton = false }: { showViewAllButton?: boo
             name: item.nome,
             category: item.categoria || 'Outros',
             image: item.imagem_url || '',
-            price: item.preco_diario ? `R$ ${item.preco_diario.toFixed(2)}` : 'Consulte',
-            originalPrice: item.preco_normal ? `R$ ${item.preco_normal.toFixed(2)}` : undefined,
+            price: item.preco_diario 
+              ? `R$ ${item.preco_diario.toFixed(2)}` 
+              : item.preco_normal 
+                ? `R$ ${item.preco_normal.toFixed(2)}`
+                : 'Consulte',
+            originalPrice: item.preco_normal && item.preco_diario 
+              ? `R$ ${item.preco_normal.toFixed(2)}` 
+              : undefined,
             description: item.descricao || '',
             rating: 4.5, // Default rating
             isPopular: item.destaque,

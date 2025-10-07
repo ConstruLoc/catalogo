@@ -11,6 +11,7 @@ import {
   Send
 } from "lucide-react";
 import construlogicLogo from "@/assets/construlogic-logo.png";
+import gvSoftwareLogo from "@/assets/gv-software-logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -149,35 +150,40 @@ const Footer = () => {
         <Separator className="mb-6" />
 
         {/* Bottom Footer */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-sm">
           <div className="flex flex-col md:flex-row items-center gap-4">
-            <p>© {currentYear} ConstruLoc. Todos os direitos reservados.</p>
+            <p className="text-muted-foreground">© {currentYear} ConstruLoc. Todos os direitos reservados.</p>
             <div className="flex gap-4">
-              <a href="#privacidade" className="hover:text-primary transition-colors">
+              <a href="#privacidade" className="text-muted-foreground hover:text-primary transition-colors">
                 Política de Privacidade
               </a>
-              <a href="#termos" className="hover:text-primary transition-colors">
+              <a href="#termos" className="text-muted-foreground hover:text-primary transition-colors">
                 Termos de Uso
               </a>
             </div>
           </div>
-          <div className="flex flex-col items-center md:items-end gap-2">
-            <p className="text-sm font-semibold">
-              Desenvolvido por{" "}
+          
+          <div className="flex flex-col items-center md:items-end gap-3">
+            <div className="flex items-center gap-3">
+              <span className="text-muted-foreground font-medium">Desenvolvido por</span>
               <a 
                 href="https://gvsoftware.tech" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-primary hover:underline font-bold text-base"
+                className="transition-all duration-300 hover:scale-105"
               >
-                GV Software
+                <img 
+                  src={gvSoftwareLogo} 
+                  alt="GV Software" 
+                  className="h-10 w-auto"
+                />
               </a>
-            </p>
+            </div>
             <a 
               href="https://instagram.com/gv_software" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-sm hover:text-primary transition-colors flex items-center gap-1.5 font-medium"
+              className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 font-medium"
             >
               <Instagram className="h-4 w-4" />
               @gv_software
