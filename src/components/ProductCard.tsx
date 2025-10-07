@@ -35,7 +35,7 @@ const ProductCard = ({
 
   const handleWhatsAppRent = () => {
     const message = `Olá! Gostaria de alugar o equipamento: ${name} - ${price}. Podem me enviar mais informações?`;
-    const whatsappUrl = `https://wa.me/5517997310747?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/5517997310741?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 

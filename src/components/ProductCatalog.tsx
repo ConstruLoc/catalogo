@@ -101,16 +101,23 @@ const ProductCatalog = ({ showViewAllButton = false }: { showViewAllButton?: boo
           schema: 'public',
           table: 'produtos_catalogo'
         },
-        (payload) => {
-          console.log('Produto atualizado:', payload);
-          // Refetch products when any change occurs
+        () => {
           fetchProducts();
         }
       )
       .subscribe();
 
+    // Polling fallback (in case realtime isn't enabled on the DB)
+    const visibilityHandler = () => {
+      if (document.visibilityState === 'visible') fetchProducts();
+    };
+    document.addEventListener('visibilitychange', visibilityHandler);
+    const intervalId = window.setInterval(fetchProducts, 5000);
+
     return () => {
       supabase.removeChannel(channel);
+      document.removeEventListener('visibilitychange', visibilityHandler);
+      window.clearInterval(intervalId);
     };
   }, [toast]);
 
