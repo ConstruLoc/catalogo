@@ -54,7 +54,7 @@ const ProductCatalog = ({ showViewAllButton = false }: { showViewAllButton?: boo
             category: item.categoria || 'Outros',
             image: item.imagem_url || '',
             price: item.preco_diario 
-              ? `R$ ${item.preco_diario.toFixed(2)}` 
+              ? `R$ ${item.preco_diario.toFixed(2)}/dia` 
               : item.preco_normal 
                 ? `R$ ${item.preco_normal.toFixed(2)}`
                 : 'Consulte',
@@ -90,6 +90,28 @@ const ProductCatalog = ({ showViewAllButton = false }: { showViewAllButton?: boo
     };
 
     fetchProducts();
+
+    // Setup real-time subscription
+    const channel = supabase
+      .channel('produtos-changes')
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'produtos_catalogo'
+        },
+        (payload) => {
+          console.log('Produto atualizado:', payload);
+          // Refetch products when any change occurs
+          fetchProducts();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, [toast]);
 
   const filteredProducts = products.filter(product => {

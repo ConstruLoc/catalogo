@@ -8,10 +8,10 @@ import {
   MapPin, 
   Clock, 
   Instagram,
-  Send
+  Send,
+  Code2
 } from "lucide-react";
 import construlogicLogo from "@/assets/construlogic-logo.png";
-import gvSoftwareLogo from "@/assets/gv-software-logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -164,19 +164,18 @@ const Footer = () => {
           </div>
           
           <div className="flex flex-col items-center md:items-end gap-3">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               <span className="text-muted-foreground font-medium">Desenvolvido por</span>
               <a 
                 href="https://gvsoftware.tech" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="transition-all duration-300 hover:scale-105"
+                className="flex items-center gap-2 text-primary hover:text-primary/80 transition-all duration-300 hover:scale-105 group"
               >
-                <img 
-                  src={gvSoftwareLogo} 
-                  alt="GV Software" 
-                  className="h-10 w-auto"
-                />
+                <Code2 className="h-5 w-5 group-hover:rotate-12 transition-transform" />
+                <span className="text-lg font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                  GV Software
+                </span>
               </a>
             </div>
             <a 

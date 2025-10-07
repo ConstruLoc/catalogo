@@ -34,8 +34,8 @@ const ProductCard = ({
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const handleWhatsAppRent = () => {
-    const message = `Olá! Gostaria de alugar o equipamento: ${name} - ${price}/dia. Podem me enviar mais informações?`;
-    const whatsappUrl = `https://wa.me/5517997310741?text=${encodeURIComponent(message)}`;
+    const message = `Olá! Gostaria de alugar o equipamento: ${name} - ${price}. Podem me enviar mais informações?`;
+    const whatsappUrl = `https://wa.me/5517997310747?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -116,7 +116,6 @@ const ProductCard = ({
             {originalPrice && (
               <span className="text-sm text-muted-foreground line-through">{originalPrice}</span>
             )}
-            <span className="text-sm text-muted-foreground">/dia</span>
           </div>
 
           <div className="space-y-2">
