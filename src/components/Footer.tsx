@@ -7,9 +7,7 @@ import {
   Mail, 
   MapPin, 
   Clock, 
-  Facebook, 
-  Instagram, 
-  Linkedin,
+  Instagram,
   Send
 } from "lucide-react";
 import construlogicLogo from "@/assets/construlogic-logo.png";
@@ -33,15 +31,14 @@ const Footer = () => {
               A ConstruLoc é especialista em locação de equipamentos para construção, 
               oferecendo soluções completas para sua obra com qualidade e segurança garantidas.
             </p>
-            <div className="flex space-x-3">
-              <Button size="icon" variant="outline" className="hover:bg-primary hover:text-primary-foreground">
-                <Facebook className="h-4 w-4" />
-              </Button>
-              <Button size="icon" variant="outline" className="hover:bg-primary hover:text-primary-foreground">
-                <Instagram className="h-4 w-4" />
-              </Button>
-              <Button size="icon" variant="outline" className="hover:bg-primary hover:text-primary-foreground">
-                <Linkedin className="h-4 w-4" />
+            <div className="flex justify-center">
+              <Button 
+                size="lg"
+                className="bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 hover:from-purple-700 hover:via-pink-600 hover:to-orange-500 text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+                onClick={() => window.open('https://www.instagram.com/para_fer_', '_blank')}
+              >
+                <Instagram className="h-5 w-5 mr-2" />
+                Siga no Instagram
               </Button>
             </div>
           </div>
@@ -111,22 +108,22 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-sm">
                 <Phone className="h-4 w-4 text-primary" />
-                <span className="text-muted-foreground">(11) 99999-9999</span>
+                <span className="text-muted-foreground">(17) 99731-0747</span>
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <Mail className="h-4 w-4 text-primary" />
-                <span className="text-muted-foreground">contato@construloc.com.br</span>
+                <span className="text-muted-foreground">construloc.contato@gmail.com</span>
               </div>
               <div className="flex items-start gap-2 text-sm">
                 <MapPin className="h-4 w-4 text-primary mt-0.5" />
                 <span className="text-muted-foreground">
-                  Rua dos Equipamentos, 123<br />
-                  São Paulo, SP - 01234-567
+                  R. Manoel de Lima, 233<br />
+                  Paraíso - SP, 15825-000
                 </span>
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <Clock className="h-4 w-4 text-primary" />
-                <span className="text-muted-foreground">Seg-Sex: 7h-18h | Sáb: 7h-12h</span>
+                <span className="text-muted-foreground">Segunda-Sexta: 07H-18H | Sábado: 07H-11H</span>
               </div>
             </div>
 
@@ -164,14 +161,14 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          <div className="flex flex-col items-center md:items-end gap-1">
-            <p className="text-xs font-medium">
+          <div className="flex flex-col items-center md:items-end gap-2">
+            <p className="text-sm font-semibold">
               Desenvolvido por{" "}
               <a 
                 href="https://gvsoftware.tech" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-primary hover:underline font-semibold"
+                className="text-primary hover:underline font-bold text-base"
               >
                 GV Software
               </a>
@@ -180,9 +177,9 @@ const Footer = () => {
               href="https://instagram.com/gv_software" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-xs hover:text-primary transition-colors flex items-center gap-1"
+              className="text-sm hover:text-primary transition-colors flex items-center gap-1.5 font-medium"
             >
-              <Instagram className="h-3 w-3" />
+              <Instagram className="h-4 w-4" />
               @gv_software
             </a>
           </div>
