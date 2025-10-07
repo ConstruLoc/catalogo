@@ -26,15 +26,15 @@ const Header = () => {
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-1">
                 <Phone className="h-3 w-3" />
-                <span>(11) 99999-9999</span>
+                <span>(17) 99731-0747</span>
               </div>
               <div className="flex items-center gap-1">
                 <MapPin className="h-3 w-3" />
-                <span>São Paulo, SP</span>
+                <span>Paraíso, SP</span>
               </div>
             </div>
             <div className="hidden md:block">
-              <span className="font-medium">Horário de Atendimento: Seg-Sex 7h-18h | Sáb 7h-12h</span>
+              <span className="font-medium">Horário de Atendimento: Segunda-Sexta 07H-18H | Sábado 07H-11H</span>
             </div>
           </div>
         </div>
@@ -109,7 +109,7 @@ const Header = () => {
               className="bg-gradient-primary hover:bg-gradient-hero text-primary-foreground shadow-primary"
               onClick={() => {
                 const message = "Olá! Gostaria de solicitar um orçamento para locação de equipamentos. Podem me ajudar?";
-                const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`;
+                const whatsappUrl = `https://wa.me/5517997310747?text=${encodeURIComponent(message)}`;
                 window.open(whatsappUrl, '_blank');
               }}
             >
@@ -187,7 +187,7 @@ const Header = () => {
                   className="w-full bg-gradient-primary hover:bg-gradient-hero text-primary-foreground"
                   onClick={() => {
                     const message = "Olá! Gostaria de solicitar um orçamento para locação de equipamentos. Podem me ajudar?";
-                    const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`;
+                    const whatsappUrl = `https://wa.me/5517997310747?text=${encodeURIComponent(message)}`;
                     window.open(whatsappUrl, '_blank');
                     setIsMenuOpen(false);
                   }}

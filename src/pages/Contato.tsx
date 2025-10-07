@@ -13,9 +13,7 @@ import {
   Clock, 
   MessageCircle,
   Send,
-  Instagram,
-  Facebook,
-  Linkedin
+  Instagram
 } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
@@ -88,7 +86,7 @@ Olá! Recebi um contato através do site:
     {
       icon: Clock,
       title: "Horário",
-      details: "Seg-Sex: 7h às 18h\nSáb: 7h às 12h",
+      details: "Segunda-Sexta: 07H-18H\nSábado: 07H-11H",
       action: null
     }
   ];
@@ -269,17 +267,14 @@ Olá! Recebi um contato através do site:
               <Card className="mt-6 shadow-card">
                 <CardContent className="p-6">
                   <h3 className="font-semibold mb-4">Redes Sociais</h3>
-                  <div className="flex gap-3">
-                    <Button size="icon" variant="outline" className="hover:bg-blue-600 hover:text-white">
-                      <Facebook className="h-4 w-4" />
-                    </Button>
-                    <Button size="icon" variant="outline" className="hover:bg-pink-600 hover:text-white">
-                      <Instagram className="h-4 w-4" />
-                    </Button>
-                    <Button size="icon" variant="outline" className="hover:bg-blue-700 hover:text-white">
-                      <Linkedin className="h-4 w-4" />
-                    </Button>
-                  </div>
+                  <Button 
+                    size="lg"
+                    className="w-full bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 hover:from-purple-700 hover:via-pink-600 hover:to-orange-500 text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+                    onClick={() => window.open('https://www.instagram.com/para_fer_', '_blank')}
+                  >
+                    <Instagram className="h-5 w-5 mr-2" />
+                    Siga no Instagram
+                  </Button>
                 </CardContent>
               </Card>
             </div>
@@ -296,7 +291,7 @@ Olá! Recebi um contato através do site:
           </div>
           <div className="rounded-lg overflow-hidden shadow-card">
             <iframe 
-              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=R.+Manoel+de+Lima,+233,+Paraíso+-+SP,+15825-000&maptype=satellite"
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=R.+Manoel+de+Lima,+233,+Paraíso+-+SP,+15825-000&zoom=18&maptype=satellite"
               width="100%"
               height="450"
               style={{ border: 0 }}
