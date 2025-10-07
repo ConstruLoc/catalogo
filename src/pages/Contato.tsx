@@ -82,8 +82,8 @@ Olá! Recebi um contato através do site:
     {
       icon: MapPin,
       title: "Endereço",
-      details: "R. Manoel de Lima 233\nCentro",
-      action: () => window.open('https://maps.google.com/?q=R.+Manoel+de+Lima+233+centro')
+      details: "R. Manoel de Lima, 233\nParaíso - SP",
+      action: () => window.open('https://maps.google.com/?q=R.+Manoel+de+Lima+233+Paraíso+SP')
     },
     {
       icon: Clock,
@@ -296,7 +296,7 @@ Olá! Recebi um contato através do site:
           </div>
           <div className="rounded-lg overflow-hidden shadow-card">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.5!2d-49.3777!3d-20.8194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94bdada5c0f0c5c5%3A0x1!2sR.%20Manoel%20de%20Lima%2C%20233%20-%20Centro!5e1!3m2!1spt-BR!2sbr!4v1234567890!5m2!1spt-BR!2sbr"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.4!2d-46.6436!3d-23.5730!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0x33737e0aefb4f1a1!2sR.%20Manoel%20de%20Lima%2C%20233%20-%20Para%C3%ADso%2C%20S%C3%A3o%20Paulo%20-%20SP!5e1!3m2!1spt-BR!2sbr!4v1234567890!5m2!1spt-BR!2sbr"
               width="100%"
               height="450"
               style={{ border: 0 }}
