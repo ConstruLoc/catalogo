@@ -1,10 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Shield, Clock, Award } from "lucide-react";
+import { ArrowRight, Shield, Award } from "lucide-react";
 import heroBg from "@/assets/construloc-hero-bg.png";
 import { openWhatsApp } from "@/lib/whatsapp";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate();
+  
   return (
     <section id="inicio" className="relative min-h-[600px] flex items-center overflow-hidden">
       {/* Background */}
@@ -22,7 +25,7 @@ const Hero = () => {
         <div className="max-w-2xl">
           <Badge className="mb-6 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
             <Award className="w-4 h-4 mr-2" />
-            Mais de 15 anos de experiência
+            1º ano de experiência
           </Badge>
           
           <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
@@ -40,7 +43,7 @@ const Hero = () => {
             <Button 
               size="lg" 
               className="bg-gradient-primary hover:bg-gradient-hero text-primary-foreground shadow-primary group"
-              onClick={() => (window.location.href = '/equipamentos')}
+              onClick={() => navigate('/equipamentos')}
             >
               Ver Catálogo Completo
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -56,7 +59,7 @@ const Hero = () => {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
                 <Shield className="w-6 h-6 text-primary" />
@@ -66,23 +69,13 @@ const Hero = () => {
                 <div className="text-sm text-muted-foreground">Seguro</div>
               </div>
             </div>
-            
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                <Clock className="w-6 h-6 text-primary" />
-              </div>
-              <div>
-                <div className="font-bold text-lg">24h</div>
-                <div className="text-sm text-muted-foreground">Suporte</div>
-              </div>
-            </div>
 
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
                 <Award className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <div className="font-bold text-lg">500+</div>
+                <div className="font-bold text-lg">100+</div>
                 <div className="text-sm text-muted-foreground">Clientes</div>
               </div>
             </div>
