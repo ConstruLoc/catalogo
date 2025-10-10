@@ -17,7 +17,6 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
 
 const Contato = () => {
   const { toast } = useToast();
@@ -28,49 +27,12 @@ const Contato = () => {
     subject: "",
     message: ""
   });
-  
-  // Webhook URL do Zapier - substitua pela sua URL
-  const ZAPIER_WEBHOOK_URL = ""; // Cole aqui o webhook do Zapier quando criar
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    try {
-      // Save to database
-      const { error } = await supabase
-        .from('contact_messages')
-        .insert([formData]);
-
-      if (error) throw error;
-
-      // Send notification via Zapier webhook if configured
-      if (ZAPIER_WEBHOOK_URL) {
-        try {
-          await fetch(ZAPIER_WEBHOOK_URL, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            mode: "no-cors",
-            body: JSON.stringify({
-              nome: formData.name,
-              email: formData.email,
-              telefone: formData.phone,
-              assunto: formData.subject,
-              mensagem: formData.message,
-              data: new Date().toISOString(),
-              origem: "Site Construloc"
-            }),
-          });
-          console.log("Notificação enviada via Zapier");
-        } catch (webhookError) {
-          console.error("Erro ao enviar webhook:", webhookError);
-          // Continue mesmo se o webhook falhar
-        }
-      }
-
-      // WhatsApp message with form data
-      const whatsappMessage = `
+    // WhatsApp message with form data
+    const whatsappMessage = `
 Olá! Recebi um contato através do site:
 
 *Nome:* ${formData.name}
@@ -78,31 +40,15 @@ Olá! Recebi um contato através do site:
 *Telefone:* ${formData.phone}
 *Assunto:* ${formData.subject}
 *Mensagem:* ${formData.message}
-      `.trim();
-      
-      const whatsappUrl = `https://wa.me/5517997310747?text=${encodeURIComponent(whatsappMessage)}`;
-      window.open(whatsappUrl, '_blank');
-      
-      toast({
-        title: "Mensagem registrada!",
-        description: "Você será redirecionado para o WhatsApp para finalizar o contato.",
-      });
-
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: ""
-      });
-    } catch (error) {
-      toast({
-        title: "Erro ao enviar mensagem",
-        description: "Tente novamente mais tarde.",
-        variant: "destructive",
-      });
-    }
+    `.trim();
+    
+    const whatsappUrl = `https://wa.me/5517997310747?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(whatsappUrl, '_blank');
+    
+    toast({
+      title: "Mensagem enviada!",
+      description: "Você será redirecionado para o WhatsApp para finalizar o contato.",
+    });
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
