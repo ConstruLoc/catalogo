@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contato = () => {
   const { toast } = useToast();
@@ -28,11 +29,19 @@ const Contato = () => {
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // WhatsApp message with form data
-    const whatsappMessage = `
+    try {
+      // Save to database
+      const { error } = await supabase
+        .from('contact_messages')
+        .insert([formData]);
+
+      if (error) throw error;
+
+      // WhatsApp message with form data
+      const whatsappMessage = `
 Olá! Recebi um contato através do site:
 
 *Nome:* ${formData.name}
@@ -40,15 +49,31 @@ Olá! Recebi um contato através do site:
 *Telefone:* ${formData.phone}
 *Assunto:* ${formData.subject}
 *Mensagem:* ${formData.message}
-    `.trim();
-    
-    const whatsappUrl = `https://wa.me/5517997310747?text=${encodeURIComponent(whatsappMessage)}`;
-    window.open(whatsappUrl, '_blank');
-    
-    toast({
-      title: "Mensagem enviada!",
-      description: "Você será redirecionado para o WhatsApp para finalizar o contato.",
-    });
+      `.trim();
+      
+      const whatsappUrl = `https://wa.me/5517997310747?text=${encodeURIComponent(whatsappMessage)}`;
+      window.open(whatsappUrl, '_blank');
+      
+      toast({
+        title: "Mensagem registrada!",
+        description: "Você será redirecionado para o WhatsApp para finalizar o contato.",
+      });
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: ""
+      });
+    } catch (error) {
+      toast({
+        title: "Erro ao enviar mensagem",
+        description: "Tente novamente mais tarde.",
+        variant: "destructive",
+      });
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

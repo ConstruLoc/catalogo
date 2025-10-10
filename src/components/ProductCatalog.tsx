@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import ProductCard from "./ProductCard";
 import ProductDetails from "./ProductDetails";
 import { Search, Filter, Grid, List, Loader2 } from "lucide-react";
-import { supabase, type ProdutoCatalogo } from "@/integrations/supabase/client";
+import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
 interface Product {
@@ -34,83 +34,10 @@ const ProductCatalog = ({ showViewAllButton = false }: { showViewAllButton?: boo
 
   // Fetch products from Supabase
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setIsLoading(true);
-        const { data, error } = await supabase
-          .from('produtos_catalogo')
-          .select('*')
-          .eq('disponivel', true)
-          .order('destaque', { ascending: false })
-          .order('created_at', { ascending: false });
-
-        if (error) throw error;
-
-        if (data) {
-          // Transform Supabase data to Product format
-          const transformedProducts: Product[] = data.map((item: ProdutoCatalogo) => ({
-            id: item.id,
-            name: item.nome,
-            category: item.categoria || 'Outros',
-            image: item.imagem_url || '',
-            price: item.preco_diario 
-              ? `R$ ${item.preco_diario.toFixed(2)}/dia` 
-              : item.preco_normal 
-                ? `R$ ${item.preco_normal.toFixed(2)}`
-                : 'Consulte',
-            originalPrice: item.preco_normal && item.preco_diario 
-              ? `R$ ${item.preco_normal.toFixed(2)}` 
-              : undefined,
-            description: item.descricao || '',
-            rating: 4.5, // Default rating
-            isPopular: item.destaque,
-            specifications: item.especificacoes && typeof item.especificacoes === 'string'
-              ? item.especificacoes.split('\n').filter(s => s.trim()) 
-              : []
-          }));
-
-          setProducts(transformedProducts);
-
-          // Extract unique categories
-          const uniqueCategories = Array.from(
-            new Set(transformedProducts.map(p => p.category))
-          ).filter(Boolean);
-          setCategories(['Todos', ...uniqueCategories]);
-        }
-      } catch (error) {
-        console.error('Erro ao buscar produtos:', error);
-        toast({
-          title: "Erro ao carregar produtos",
-          description: "Não foi possível carregar os produtos do catálogo.",
-          variant: "destructive"
-        });
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchProducts();
-
-    // Setup real-time subscription
-    const channel = supabase
-      .channel('produtos-changes')
-      .on(
-        'postgres_changes',
-        {
-          event: '*',
-          schema: 'public',
-          table: 'produtos_catalogo'
-        },
-        () => {
-          console.log('Mudança detectada nos produtos');
-          fetchProducts();
-        }
-      )
-      .subscribe();
-
-    return () => {
-      supabase.removeChannel(channel);
-    };
+    // Mock data for now - table produtos_catalogo doesn't exist yet
+    setIsLoading(false);
+    setProducts([]);
+    setCategories(['Todos']);
   }, [toast]);
 
   const filteredProducts = products.filter(product => {
