@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import ProductCard from "./ProductCard";
 import ProductDetails from "./ProductDetails";
 import { Search, Filter, Grid, List, Loader2 } from "lucide-react";
+import { Link } from "react-router-dom";
 import { supabase, type ProdutoCatalogo } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
@@ -232,9 +233,9 @@ const ProductCatalog = ({ showViewAllButton = false }: { showViewAllButton?: boo
                 variant="outline" 
                 size="lg"
                 className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-                onClick={() => window.location.href = '/equipamentos'}
+                asChild
               >
-                Ver Todos os Produtos
+                <Link to="/equipamentos">Ver Todos os Produtos</Link>
               </Button>
             </div>
           )

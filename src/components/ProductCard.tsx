@@ -40,11 +40,11 @@ const ProductCard = ({
   };
 
   return (
-    <Card className="group overflow-hidden border-0 shadow-card hover:shadow-primary transition-all duration-300 hover:-translate-y-2 bg-gradient-card">
+    <Card className={`group overflow-hidden border-0 shadow-card hover:shadow-primary transition-all duration-300 hover:-translate-y-2 bg-gradient-card ${isPopular ? 'ring-2 ring-primary/50' : ''}`}>
       <div className="relative overflow-hidden">
         {isPopular && (
           <Badge className="absolute top-3 left-3 z-10 bg-primary text-primary-foreground">
-            Popular
+            Destaque
           </Badge>
         )}
         
