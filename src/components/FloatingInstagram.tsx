@@ -8,16 +8,19 @@ const FloatingInstagram = () => {
 
   return (
     <div className="fixed right-6 top-1/2 -translate-y-1/2 z-50 group">
+      {/* Outer glow effect - pulsing */}
+      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 blur-2xl opacity-50 animate-[pulse_3s_ease-in-out_infinite]" />
+      
+      {/* Middle glow layer */}
+      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 blur-xl opacity-40" />
+      
       <Button
         onClick={handleClick}
         size="lg"
-        className="relative w-14 h-14 rounded-full bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 shadow-lg hover:shadow-xl transition-all duration-300 animate-pulse hover:animate-none hover:scale-110 p-0"
+        className="relative w-14 h-14 rounded-full bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 shadow-2xl hover:shadow-[0_0_30px_rgba(236,72,153,0.6)] transition-all duration-500 hover:scale-110 p-0 border-2 border-white/20"
       >
-        {/* Glow effect */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-300 animate-pulse" />
-        
         {/* Icon */}
-        <Instagram className="relative z-10 h-6 w-6 text-white" strokeWidth={2.5} />
+        <Instagram className="relative z-10 h-6 w-6 text-white drop-shadow-lg" strokeWidth={2.5} />
       </Button>
       
       {/* Tooltip */}
